@@ -12,11 +12,11 @@ chalice does not have a defined mechanism for distributing code. I've listed the
 chalice new-project my-chalice-project
 cd my-chalice-project
 rm app.py
-wget https://raw.githubusercontent.com/konekti/chalice/master/LICENSE
+wget https://raw.githubusercontent.com/konekti/aws-cf-validator/master/app.py
 chalice deploy
 ```
-5. Note the REST API URL that `chalice deploy` prints. Add the string "validate" to the end. The URL for testing should resemble "https://3d7dikellka.execute-api.us-east-1.amazonaws.com/api/validate/". I set the environment variable CFURL to prevent repetitive typing.
-6. Download a valid CloudFormation templates such as this [one](https://konekti.us/assets/posts/2018/vpc.yaml).
+5. Note the REST API URL that `chalice deploy` prints. Add the string "validate" to the end. The URL for testing should resemble `https://3d7dikellka.execute-api.us-east-1.amazonaws.com/api/validate/`. I set the environment variable CFURL to prevent repetitive typing.
+6. Download a valid CloudFormation YAML template such as this [one](https://konekti.us/assets/posts/2018/vpc.yaml).
 7. Send a POST request using the data from the template. `curl -H "Content-Type: text/plain" --data-binary @vpc.yaml $CFURL. The response should be "{"validity": "true", "message": "valid"}".
 
-In the case you get stuck, read the chalice README.
+In the case you get stuck, read the chalice [README](https://github.com/aws/chalice/blob/master/README.rst).
